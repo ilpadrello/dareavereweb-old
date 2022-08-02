@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script defer src="bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="popperjs/cjs/popper.js"></script>
+
+    <link rel="stylesheet" href="./src/css/index.css">
+</head>
+
+<body class="text-center">
+    <main class="form-signin">
+        <form action="main.html" method="post" class="form-signin" id="signInForm">
+            <img class="mb-4" src="./imgs/logos/Logo.png" alt="Dare Avere Logo">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <div class="form-floating">
+                <input class="form-control" type="email" name="" id="email" placeholder="allacatalla@gmail.com">
+                <label for="email">Email adress</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="password" name="password" id="password" placeholder="a">
+                <label for="password">Password</label>
+            </div>
+            <div class="mt-3"><a href="#">Forgot Password</a></div>
+
+            <button class="w-100 btn btn-large btn-primary mt-3" type="button" onclick="signIn()">Sign
+                in</button>
+        </form>
+    </main>
+
+    <script>
+        function signIn() {
+            console.log("signIn called");
+            toSend = {
+                email: email = document.getElementById("email").value,
+                password: document.getElementById("password").value
+            }
+            fetch("./signin", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(toSend)
+            }).then((res) => {
+                console.log(res);
+            })
+        }
+    </script>
+</body>
+
+</html>
