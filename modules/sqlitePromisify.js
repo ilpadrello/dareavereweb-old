@@ -30,6 +30,8 @@ const db = new Proxy(tr, {
               if (error) {
                 rej(error);
               } else {
+                if (typeof result === "undefined") result = [];
+                if (!Array.isArray(result)) result = [result];
                 res(result);
               }
             });
