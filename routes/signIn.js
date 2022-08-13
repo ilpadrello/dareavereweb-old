@@ -5,8 +5,13 @@ const sqlite = require("../modules/sqlitePromisify");
 const jwtHandler = require("jsonwebtoken");
 const jwtKey = require("../modules/jwtKeyGen");
 
-router.post("/", async (req, res, next) => {
-  console.log(req.body);
+router.post("/", async (req, res) => {
+  // console.log(req.body);
+  // console.log("Headers", req.headers);
+  // console.log("Cookies: ", req.cookies);
+  // console.log("Browser: " + req.headers["user-agent"]);
+  // console.log("Language: " + req.headers["accept-language"]);
+
   let ip = req.socket.remoteAddress;
   let email = req.body.email;
   let plainPwd = req.body.password;
@@ -31,8 +36,10 @@ router.post("/", async (req, res, next) => {
         nickname: users[0].nickname,
         ip: ip,
         ttl: new Date(currentDate.getTime() + 15 * 60000),
+        userAgent: req.headers["user-agent"],
       };
       let toReturn = jwtHandler.sign(user, jwtKey);
+      res.cookie("Authorization", toReturn);
       res.send(toReturn);
       return;
     }

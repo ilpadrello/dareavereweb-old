@@ -2,5 +2,6 @@
   "DB_FILE_PATH": "database/database.db",
   "LOGGING": "verbose",
   "ENVIRONMENT": "development",
-  "JWT_KEY_LENGTH": 32
+  "JWT_KEY_LENGTH": 256,
+  "REDIRECT_TO_HOME": true
 }

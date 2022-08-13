@@ -1,8 +1,13 @@
 const config = require("config");
 const keyGen = function (len) {
-  return Math.random()
-    .toString(36)
-    .substring(2, len + 2);
+  let key = "";
+  for (i = 0; i < len; i++) {
+    key += Math.random()
+      .toString(36)
+      .substring(2, 1 + 2);
+  }
+  return key;
 };
-
-module.exports = keyGen(config.get("JWT_KEY_LENGTH"));
+const key = keyGen(config.get("JWT_KEY_LENGTH"));
+console.log(key);
+module.exports = key;
