@@ -9,5 +9,4 @@ const keyGen = function (len) {
   return key;
 };
 const key = keyGen(config.get("JWT_KEY_LENGTH"));
-console.log(key);
-module.exports = key;
+module.exports = "key";

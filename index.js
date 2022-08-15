@@ -1,10 +1,12 @@
+const { reset } = require("nodemon");
+
 try {
   const express = require("express");
   const config = require("config");
   const portfinder = require("portfinder");
   const path = require("path");
   const sqlite = require("./modules/sqlitePromisify");
-  const dbInit = require("./modules/dbInit");
+  const dbInit = require("./modules/dbInitModule");
 
   //Loading Middlewares
   const cookieParser = require("cookie-parser");
@@ -16,7 +18,7 @@ try {
 
   const app = express();
   sqlite.connect(path.join(__dirname, config.get("DB_FILE_PATH")));
-  dbInit(sqlite);
+  //dbInit(sqlite);
 
   app.use(cookieParser());
 
@@ -40,11 +42,21 @@ try {
 
   app.use(accessToken);
   //All routes must have access from now on
-  app.use("/balance", balance);
   app.use(
     "/restricted",
     express.static(path.join(__dirname, "/public/restricted"))
   );
+  app.use("/balance", balance);
+
+  app.use((req, res) => {
+    console.log("IS THIS CALLED?");
+    console.log("-->", JSON.stringify(res.error));
+    res.status(500);
+    if (res.error.status) {
+      res.status = res.error.status;
+    }
+    res.send(res.error.message);
+  });
 
   portfinder.getPort((err, port) => {
     if (!err) {
@@ -56,5 +68,5 @@ try {
     }
   });
 } catch (error) {
-  console.log(error);
+  console.log("ERROR CATCHED ON MAIN PAGE", error);
 }

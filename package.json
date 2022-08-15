@@ -4,7 +4,8 @@
   "description": "A little tool to keep money balance with the wifey",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "resetdb": "node modules/dbInitCommand.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
     "portfinder": "^1.0.28",
     "sqlite3": "^5.0.11"
   },

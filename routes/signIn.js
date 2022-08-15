@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
       "SELECT * FROM users WHERE email = ? AND pwd = ?",
       [email, pwd]
     );
-    console.log("USERS FOUND", users);
 
     if (users.length === 0) {
       console.log("USER NOT FOUND RETURN 401");
