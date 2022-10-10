@@ -43,7 +43,7 @@ module.exports = async function (sqlite) {
           fk_user INTEGER NOT NULL,
           date TEXT(40) NOT NULL,
           fk_category INTEGER,
-          transfer NUMERIC,
+          percentage NUMERIC,
           comment TEXT,
           CONSTRAINT Transactions_FK FOREIGN KEY (fk_user) REFERENCES users(id),
           CONSTRAINT Category_FK FOREIGN KEY (fk_category) REFERENCES category(id)
