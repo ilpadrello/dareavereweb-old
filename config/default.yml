@@ -1,0 +1,14 @@
+---
+#Path to the database file
+DB_FILE_PATH: database/database.db
+
+# This specify the type of log you want when you run the script.
+# Differents kind of log levels are possible;
+# - verbose : Log Everything!
+LOGGING: verbose
+
+# Specify how long (char) the generated key for the JWT must be
+JWT_KEY_LENGTH: 256
+
+# I Dont remeber wha this does.
+REDIRECT_TO_HOME: true

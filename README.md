@@ -20,8 +20,7 @@ We are going to use Vue3 for this project, to better understand the framework
 ## CSS FRAMEWORK ? Vue Bootstrap
 
 We are going to use bootstrap for giving some esthetic to our project
-
-## HOW TO CONNECT
+...
 
 # DARE AVERE WEB (DOCUMENTATION)
 

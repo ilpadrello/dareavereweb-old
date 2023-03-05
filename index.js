@@ -1,6 +1,5 @@
-const { reset } = require("nodemon");
-
 try {
+  console.log(process.env.NODE_ENV);
   const express = require("express");
   const config = require("config");
   const portfinder = require("portfinder");
